@@ -7,22 +7,7 @@
 
 using namespace std;
 
-class Rule
-{
-private:
-    /* data */
-public:
-    Rule(/* args */);
-    ~Rule();
-};
-
-Rule::Rule(/* args */)
-{
-}
-
-Rule::~Rule()
-{
-}
+Node* parser(vector<string> &tokens);
 
 
 #endif
