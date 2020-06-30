@@ -3,12 +3,13 @@
 #include <vector>
 #include <string>
 #include "tools.hpp"
+#include "parser.hpp"
 
-int position = 0;
 
 int main()
 {
     std::vector<std::string> tokens = readTokens();
-    printTokens(tokens);
+    //printTokens(tokens);
+    Node* tree = parser(tokens, )
     return 0;
 }

@@ -16,6 +16,9 @@
 #define AND ("&&")
 #define OR ("||")
 
+#define ATRIBUICAO ("=")
+#define PREFIXO_INT ("long")
+
 #include <iostream>
 #include <vector>
 
