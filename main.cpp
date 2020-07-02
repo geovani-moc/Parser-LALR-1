@@ -10,6 +10,6 @@ int main()
 {
     std::vector<std::string> tokens = readTokens();
     //printTokens(tokens);
-    Node* tree = parser(tokens);
+    //Node* tree = parser(tokens);
     return 0;
 }

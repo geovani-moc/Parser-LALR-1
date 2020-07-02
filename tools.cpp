@@ -14,7 +14,8 @@ vector<string> readTokens()
 
 void printTokens(vector<string> &tokens)
 {
-    for (int i = 0; i < tokens.size(); i++)
+    int size = (int) tokens.size();
+    for (int i = 0; i < size; i++)
     {
         cout << tokens[i] << endl;
     }
