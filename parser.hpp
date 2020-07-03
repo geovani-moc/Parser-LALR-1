@@ -5,21 +5,13 @@
 #include <string>
 #include "token.hpp"
 #include "rule.hpp"
+#include "transition.hpp"
 
 using namespace std;
-
-typedef struct Operation
-{
-    char action;
-    int actionNumber;
-}Operation;
-
 
 void parser(vector<string> &tokens);
 bool acceptGrammar(int currentState);
 Token readToken(int position);
-
-
 
 
 #endif

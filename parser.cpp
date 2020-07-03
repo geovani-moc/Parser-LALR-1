@@ -13,7 +13,7 @@ void parser(vector<string> &tokens)
     while (!acceptGrammar(currentState))
     {
         token = readToken(position);
-        operation = checkOperationTable(token, currentState, stack.back());
+        operation = seekTransition(token, currentState, stack.back());
 
         switch (operation.action)
         {
@@ -60,10 +60,4 @@ Token readToken(int position)
 {
     Token token;
     return token;
-}
-
-Operation checkOperationTable(Token token, int currentState, Token tokenStackTop)
-{
-    Operation operation;
-    return operation;
 }
