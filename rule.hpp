@@ -16,5 +16,7 @@ typedef struct Rule
 
 Rule seekRule(int number);
 
+vector<Rule> readRules(const char* fileName);
+
 
 #endif

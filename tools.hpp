@@ -5,11 +5,14 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
+#include "token.hpp"
 
 using namespace std;
 
-vector<string> readTokens();
-void printTokens(vector<string> &tokens);
+vector<string> readToken();
+void printLexical(vector<string> &lines);
+vector<Token> lexicalToToken(vector<string> &lexical);
+
 
 
 #endif

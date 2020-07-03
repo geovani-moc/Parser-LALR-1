@@ -15,5 +15,6 @@ typedef struct Token
 
 } Token;
 
+vector<Token> readTokens(const char * fileName);
 
 #endif

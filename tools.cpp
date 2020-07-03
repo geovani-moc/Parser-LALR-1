@@ -1,24 +1,25 @@
 #include "tools.hpp"
 
-vector<string> readTokens()
+vector<string> readLexical()
 {
-    vector<string> tokens;
+    vector<string> line;
     string buffer;
     while (getline(cin, buffer))
     {
-        tokens.push_back(buffer);
+        line.push_back(buffer);
     }
     
-    return tokens;
+    return line;
 }
 
-void printTokens(vector<string> &tokens)
+void printLexical(vector<string> &lines)
 {
-    int size = (int) tokens.size();
+    int size = (int) lines.size();
     for (int i = 0; i < size; i++)
     {
-        cout << tokens[i] << endl;
+        cout << lines[i] << endl;
     }
     
 }
 
+vector<Token> lexicalToToken(vector<string> &lexical);
