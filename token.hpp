@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -16,5 +17,6 @@ typedef struct Token
 } Token;
 
 vector<Token> readTokens(const char * fileName);
+Token stringToToken(string &line);
 
 #endif

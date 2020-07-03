@@ -11,12 +11,14 @@ using namespace std;
 int main()
 {
     const char *fileTokens = "tokens.txt";
-    const char *fileRules = "rules.txt";
-    const char *fileTransitions = "transitions.txt";
+    //const char *fileRules = "rules.txt";
+    //const char *fileTransitions = "transitions.txt";
 
     vector<Token> tokens = readTokens(fileTokens);
-    vector<Rule> rules = readRules(fileRules);
-    vector<Transition> transitions = readTransitions(fileTransitions);
+    //vector<Rule> rules = readRules(fileRules);
+    
+    //vector<Transition> transitions = readTransitions(fileTransitions);
+    //printTransition(transitions);
 
     //Node* tree = parser(tokens);
     return 0;
