@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "token.hpp"
+#include "rule.hpp"
 
 using namespace std;
 

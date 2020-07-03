@@ -5,8 +5,9 @@ void parser(vector<string> &tokens)
     int position = 0;
     int currentState = 0;
     vector<Token> stack;
-    Operation operation;
 
+    Operation operation;
+    Rule currentRule;
     Token token;
 
     while (!acceptGrammar(currentState))
@@ -20,14 +21,26 @@ void parser(vector<string> &tokens)
             stack.push_back(token);
             position++;
             currentState = operation.actionNumber;
+            stack.back().currentState = currentState;
             break;
 
         case 'r':
+            currentRule = seekRule(operation.actionNumber);
+
+            for (int i = 0; i < currentRule.unstackQuantity; i++)
+            {
+                stack.pop_back();
+                // adicionar elemento na estrutura em memoria aqui
+            }
+
+            currentState = stack.back().currentState;
+            stack.push_back(currentRule.symbol);
 
             break;
 
         case 'g':
             currentState = operation.actionNumber;
+            stack.back().currentState = currentState;
             break;
 
         default:
