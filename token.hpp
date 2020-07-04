@@ -19,5 +19,6 @@ typedef struct Token
 vector<Token> readTokens(const char * fileName);
 Token stringToToken(string &line);
 void printToken(vector<Token> &tokens);
+void printToken(Token &token);
 
 #endif

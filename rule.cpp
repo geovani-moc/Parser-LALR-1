@@ -17,11 +17,22 @@ vector<Rule> readRules(const char *fileName)
     return rules;
 }
 
-Rule seekRule(int number)
+Rule seekRule(int number, vector<Rule> &rules)
 {
     Rule rule;
+    int size = (int)rules.size();
 
-    return rule;
+    for (int i = 0; i < size; i++)
+    {
+        if (rules[i].number == number)
+        {
+            rule = rules[i];
+            return rule;
+        }
+    }
+    
+    fprintf(stderr, "Erro: Regra %d nao encontrada\n", number);
+    exit(EXIT_FAILURE);
 }
 
 Rule stringToRule(string &line)

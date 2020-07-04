@@ -9,8 +9,8 @@
 
 using namespace std;
 
-void parser(vector<string> &tokens);
-bool acceptGrammar(int currentState);
+void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &transitions);
+bool acceptGrammar(int currentState, int position, vector<Token> &stack);
 Token readToken(int position);
 
 

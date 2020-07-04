@@ -22,7 +22,7 @@ typedef struct Operation
 }Operation;
 
 vector<Transition> readTransitions(const char *fileName);
-Operation seekTransition(Token token, int currentState, Token tokenStackTop);
+Operation seekTransition(vector<Transition> &transitions, Token token, int currentState);
 void printTransition(vector<Transition> &transitions);
 
 #endif
