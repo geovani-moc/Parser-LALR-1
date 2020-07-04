@@ -10,7 +10,7 @@ vector<Rule> readRules(const char *fileName)
     {
         getline(file, buffer);
         if(file.eof())break;
-        //rules.push_back(buffer);
+        rules.push_back(stringToRule(buffer));
     }
 
     file.close();
@@ -22,4 +22,39 @@ Rule seekRule(int number)
     Rule rule;
 
     return rule;
+}
+
+Rule stringToRule(string &line)
+{
+    Rule rule;
+    string buffer;
+    istringstream ruleStream(line);
+
+    ruleStream >> rule.number >> buffer;
+    rule.symbol = stringToToken(buffer);
+
+    while (getline(ruleStream, buffer, ' '))
+    {
+        rule.symbolDerivation.push_back(stringToToken(buffer));
+    }
+        
+    return rule;
+}
+
+void printRule(vector<Rule> &rules)
+{
+    int size = (int)rules.size();
+    //printf("%d\n",size);
+    for (int i = 0; i < size; i++)
+    {
+        printf("[%4d] [%4s] [",rules[i].number, rules[i].symbol.symbol.c_str() );
+
+        int auxSize = rules[i].symbolDerivation.size();
+        for (int j = 0; j < auxSize; j++)
+        {
+            printf("%s ",rules[i].symbolDerivation[j].symbol.c_str());
+        }
+        printf("]\n");
+    }
+    
 }

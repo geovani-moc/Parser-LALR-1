@@ -12,7 +12,7 @@ void parser(vector<string> &tokens)
 
     while (!acceptGrammar(currentState))
     {
-        token = readToken(position);
+        token = readToken(position);// modificar isso, acessar posicao do vetor de tokens
         operation = seekTransition(token, currentState, stack.back());
 
         switch (operation.action)
