@@ -12,6 +12,7 @@ typedef struct Rule
     Token symbol;
     vector<Token> symbolDerivation;
     int unstackQuantity;
+    bool terminal;
 }Rule;
 
 Rule seekRule(int number);

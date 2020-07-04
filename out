@@ -1,23 +1,23 @@
-int
-ID hoje
-=
-NUM 30
-int
-ID mais
-=
-NUM 23
-long
-long
-int
-ID tarde
-=
-NUM 1
-ID a
-!=
-ID b
-ID casa
-==
-ID rua
-ID as
-*
-ID sa
+[   int] [      ] [  -1]
+[    ID] [  hoje] [  -1]
+[     =] [      ] [  -1]
+[   NUM] [    30] [  -1]
+[   int] [      ] [  -1]
+[    ID] [  mais] [  -1]
+[     =] [      ] [  -1]
+[   NUM] [    23] [  -1]
+[  long] [      ] [  -1]
+[  long] [      ] [  -1]
+[   int] [      ] [  -1]
+[    ID] [ tarde] [  -1]
+[     =] [      ] [  -1]
+[   NUM] [     1] [  -1]
+[    ID] [     a] [  -1]
+[    !=] [      ] [  -1]
+[    ID] [     b] [  -1]
+[    ID] [  casa] [  -1]
+[    ==] [      ] [  -1]
+[    ID] [   rua] [  -1]
+[    ID] [    as] [  -1]
+[     *] [      ] [  -1]
+[    ID] [    sa] [  -1]

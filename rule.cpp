@@ -16,3 +16,10 @@ vector<Rule> readRules(const char *fileName)
     file.close();
     return rules;
 }
+
+Rule seekRule(int number)
+{
+    Rule rule;
+
+    return rule;
+}

@@ -15,6 +15,8 @@ int main()
     //const char *fileTransitions = "transitions.txt";
 
     vector<Token> tokens = readTokens(fileTokens);
+    printToken(tokens);
+
     //vector<Rule> rules = readRules(fileRules);
     
     //vector<Transition> transitions = readTransitions(fileTransitions);
