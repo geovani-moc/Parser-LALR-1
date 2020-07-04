@@ -26,7 +26,7 @@ int main()
     vector<Transition> transitions = readTransitions(fileTransitions);
     //printTransition(transitions);
 
-    parser(tokens);
+    parser(tokens, rules, transitions);
     //Node* tree = parser(tokens);
     return 0;
 }

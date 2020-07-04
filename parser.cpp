@@ -1,6 +1,6 @@
 #include "parser.hpp"
 
-void parser(vector<Token> &tokens)
+void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &transitions)
 {
     int position = 0;
     int currentState = 0;
@@ -14,7 +14,7 @@ void parser(vector<Token> &tokens)
     {
         //token = readToken(position);// modificar isso, acessar posicao do vetor de tokens
         token = tokens[position];
-        operation = seekTransition(token, currentState, stack.back());
+        operation = seekTransition(transitions, token, currentState);
 
         switch (operation.action)
         {

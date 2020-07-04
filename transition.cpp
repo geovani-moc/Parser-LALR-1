@@ -30,11 +30,22 @@ void printTransition(vector<Transition> &transitions)
     
 }
 
-Operation seekTransition(Token token, int currentState, Token tokenStackTop)
+Operation seekTransition(vector<Transition> &transitions, Token token, int currentState)
 {
     Operation operation;
-    
-    operation.actionNumber = -2;
+    int size = transitions.size();
 
-    return operation;
+    for (int i = 0; i < size; i++)
+    {
+        if((transitions[i].state == currentState) && 
+        (transitions[i].token.compare(token.symbol) == 0))
+        {
+            operation.action = transitions[i].action;
+            operation.actionNumber = transitions[i].actionNumber;
+            return operation;
+        }
+    }
+    
+    fprintf(stderr, "Erro: Transicao nao encontrada.\n");
+    exit(EXIT_FAILURE);
 }
