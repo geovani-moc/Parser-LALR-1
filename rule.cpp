@@ -55,7 +55,7 @@ Rule stringToRule(string &line)
 void printRule(vector<Rule> &rules)
 {
     int size = (int)rules.size();
-    //printf("%d\n",size);
+
     for (int i = 0; i < size; i++)
     {
         printf("[%4d] [%4s] [",rules[i].number, rules[i].symbol.symbol.c_str() );

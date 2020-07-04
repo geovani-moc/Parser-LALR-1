@@ -64,9 +64,3 @@ bool acceptGrammar(int currentState, int position, vector<Token> &stack)
 
     return false;
 }
-
-Token readToken(int position)
-{
-    Token token;
-    return token;
-}
