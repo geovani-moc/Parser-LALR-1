@@ -1,6 +1,6 @@
 #include "parser.hpp"
 
-void parser(vector<string> &tokens)
+void parser(vector<Token> &tokens)
 {
     int position = 0;
     int currentState = 0;
@@ -10,9 +10,10 @@ void parser(vector<string> &tokens)
     Rule currentRule;
     Token token;
 
-    while (!acceptGrammar(currentState))
+    while (!acceptGrammar(currentState, position, stack))
     {
-        token = readToken(position);// modificar isso, acessar posicao do vetor de tokens
+        //token = readToken(position);// modificar isso, acessar posicao do vetor de tokens
+        token = tokens[position];
         operation = seekTransition(token, currentState, stack.back());
 
         switch (operation.action)
@@ -29,12 +30,17 @@ void parser(vector<string> &tokens)
 
             for (int i = 0; i < currentRule.unstackQuantity; i++)
             {
+                Token temporaryToken = stack.back();
                 stack.pop_back();
                 // adicionar elemento na estrutura em memoria aqui
+                printf("Reducao: ");
+                printToken(temporaryToken);
             }
 
             currentState = stack.back().currentState;
             stack.push_back(currentRule.symbol);
+
+            printToken(currentRule.symbol);
 
             break;
 
@@ -51,9 +57,12 @@ void parser(vector<string> &tokens)
     //return estrutura em memoria(arvore de parser)
 }
 
-bool acceptGrammar(int currentState)
+bool acceptGrammar(int currentState, int position, vector<Token> &stack)
 {
-    return true;
+    int acceptState = 5;
+    if ((currentState == acceptState) && (stack[position].symbol.compare("$") == 0)) return true;
+
+    return false;
 }
 
 Token readToken(int position)
