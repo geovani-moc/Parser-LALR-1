@@ -33,7 +33,7 @@ void printTransition(vector<Transition> &transitions)
 Operation seekTransition(vector<Transition> &transitions, Token token, int currentState)
 {
     Operation operation;
-    int size = transitions.size();
+    int size = (int)transitions.size();
 
     for (int i = 0; i < size; i++)
     {
@@ -46,6 +46,6 @@ Operation seekTransition(vector<Transition> &transitions, Token token, int curre
         }
     }
     
-    fprintf(stderr, "Erro: Transicao nao encontrada.\n");
+    fprintf(stderr, "Erro: Transicao com estado %d e simbolo %s nao encontrada.\n", currentState, token.symbol.c_str());
     exit(EXIT_FAILURE);
 }

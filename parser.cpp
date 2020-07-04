@@ -26,7 +26,7 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
             break;
 
         case 'r':
-            currentRule = seekRule(operation.actionNumber);
+            currentRule = seekRule(operation.actionNumber, rules);
 
             for (int i = 0; i < currentRule.unstackQuantity; i++)
             {

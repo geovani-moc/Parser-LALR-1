@@ -17,7 +17,7 @@ typedef struct Rule
     bool terminal;
 }Rule;
 
-Rule seekRule(int number);
+Rule seekRule(int number, vector<Rule> &rules);
 
 vector<Rule> readRules(const char* fileName);
 Rule stringToRule(string &line);
