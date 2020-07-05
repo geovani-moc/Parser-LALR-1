@@ -41,7 +41,7 @@ class S_vt: public S {
     V *pointerV;
     T *pointerT;
     string getClassName(){ return "S_vt"; }
-};
+}
 
 // V -> DV
 class V_dv: public V {
