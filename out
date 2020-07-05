@@ -1,0 +1,32 @@
+int - s3
+ID - s9
+; - s13
+Reducao: [     ;] [      ] [  13]
+Reducao: [    ID] [  hoje] [   9]
+Reducao: [   int] [      ] [   3]
+[     D] [      ] [  -1]
+Reducao: [     D] [      ] [   2]
+[     V] [      ] [  -1]
+ID - s7
+= - s12
+NUM - s17
+Reducao: [   NUM] [    12] [  17]
+[     E] [      ] [  -1]
++ - s26
+NUM - s17
+Reducao: [   NUM] [    30] [  17]
+[     E] [      ] [  -1]
+Reducao: [     E] [      ] [  38]
+Reducao: [     +] [      ] [  26]
+[     O] [      ] [  -1]
+Reducao: [     O] [      ] [  22]
+Reducao: [     E] [      ] [  15]
+[     E] [      ] [  -1]
+; - s21
+Reducao: [     ;] [      ] [  21]
+Reducao: [     E] [      ] [  15]
+Reducao: [     =] [      ] [  12]
+Reducao: [    ID] [  hoje] [   7]
+[     A] [      ] [  -1]
+Reducao: [     A] [      ] [   6]
+[     T] [      ] [  -1]

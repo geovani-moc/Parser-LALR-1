@@ -10,7 +10,7 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
     Rule currentRule;
     Token token;
 
-    while (!acceptGrammar(currentState, position, stack))// erro aqui, erro no estado de aceitacao
+    while (!acceptGrammar(currentState, position, tokens))// erro aqui, erro no estado de aceitacao
     {
         //token = readToken(position);// modificar isso, acessar posicao do vetor de tokens
         token = tokens[position];
