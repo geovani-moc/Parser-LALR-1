@@ -1,32 +1,41 @@
-int - s3
-ID - s9
-; - s13
-Reducao: [     ;] [      ] [  13]
-Reducao: [    ID] [  hoje] [   9]
-Reducao: [   int] [      ] [   3]
-[     D] [      ] [  -1]
-Reducao: [     D] [      ] [   2]
-[     V] [      ] [  -1]
-ID - s7
-= - s12
-NUM - s17
-Reducao: [   NUM] [    12] [  17]
-[     E] [      ] [  -1]
-+ - s26
-NUM - s17
-Reducao: [   NUM] [    30] [  17]
-[     E] [      ] [  -1]
-Reducao: [     E] [      ] [  38]
-Reducao: [     +] [      ] [  26]
-[     O] [      ] [  -1]
-Reducao: [     O] [      ] [  22]
-Reducao: [     E] [      ] [  15]
-[     E] [      ] [  -1]
-; - s21
-Reducao: [     ;] [      ] [  21]
-Reducao: [     E] [      ] [  15]
-Reducao: [     =] [      ] [  12]
-Reducao: [    ID] [  hoje] [   7]
-[     A] [      ] [  -1]
-Reducao: [     A] [      ] [   6]
-[     T] [      ] [  -1]
+State 0 shift 3
+State 3 shift 9
+State 9 shift 13
+State 13 reduce 3
+  └──────> pop [     ;] [      ] [  13]
+  └──────> pop [    ID] [  hoje] [   9]
+  └──────> pop [   int] [      ] [   3]
+State 0 goto 2
+State 2 reduce 2
+  └──────> pop [     D] [      ] [   2]
+State 0 goto 1
+State 1 shift 7
+State 7 shift 12
+State 12 shift 17
+State 17 reduce 10
+  └──────> pop [   NUM] [    12] [  17]
+State 12 goto 15
+State 15 shift 26
+State 26 shift 17
+State 17 reduce 10
+  └──────> pop [   NUM] [    30] [  17]
+State 26 goto 38
+State 38 reduce 16
+  └──────> pop [     E] [      ] [  38]
+  └──────> pop [     +] [      ] [  26]
+State 15 goto 22
+State 22 reduce 8
+  └──────> pop [     O] [      ] [  22]
+  └──────> pop [     E] [      ] [  15]
+State 12 goto 15
+State 15 shift 21
+State 21 reduce 7
+  └──────> pop [     ;] [      ] [  21]
+  └──────> pop [     E] [      ] [  15]
+  └──────> pop [     =] [      ] [  12]
+  └──────> pop [    ID] [  hoje] [   7]
+State 1 goto 6
+State 6 reduce 6
+  └──────> pop [     A] [      ] [   6]
+State 1 goto 5
+Accept

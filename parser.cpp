@@ -27,20 +27,22 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
         case 's':
             stack.push_back(token);
             position++;
+            printf("State %d ",currentState);
             currentState = operation.actionNumber;
             stack.back().currentState = currentState;
-            printf("%s - s%d\n", stack.back().symbol.c_str(), operation.actionNumber);
+            printf("shift %d\n", operation.actionNumber);
             break;
 
         case 'r':
             currentRule = seekRule(operation.actionNumber, rules);
 
+            printf("State %d reduce %d\n", currentState, currentRule.number);
             for (int i = 0; i < currentRule.unstackQuantity; i++)
             {
                 Token temporaryToken = stack.back();
                 stack.pop_back();
                 // adicionar elemento na estrutura em memoria aqui
-                printf("Reducao: ");
+                printf("  └──────> pop ");
                 printToken(temporaryToken);
             }
 
@@ -53,12 +55,14 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
             }
             
             stack.push_back(currentRule.symbol);
-            printToken(currentRule.symbol);
+            //printToken(currentRule.symbol);
             break;
 
         case 'g':
+            printf("State %d ",currentState);
             currentState = operation.actionNumber;
             stack.back().currentState = currentState;
+            printf("goto %d\n", operation.actionNumber);
             break;
 
         default:
@@ -67,7 +71,17 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
         }
     }
 
-    //reducao final tem que ser feita aqui s->VT$.
+     //reducao final tem que ser feita aqui s->VT$.
+    currentRule = seekRule(operation.actionNumber, rules);
+
+    for (int i = 0; i < currentRule.unstackQuantity; i++)
+    {
+        Token temporaryToken = stack.back();
+        stack.pop_back();
+        // adicionar elemento na estrutura em memoria aqui
+    }
+    printf("Accept");
+
 
     //return estrutura em memoria(arvore de parser)
 }
