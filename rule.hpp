@@ -14,7 +14,7 @@ typedef struct Rule
     Token symbol;
     vector<Token> symbolDerivation;
     int unstackQuantity;
-    bool terminal;
+    bool terminal;// nao parece ser necessario
 }Rule;
 
 Rule seekRule(int number, vector<Rule> &rules);

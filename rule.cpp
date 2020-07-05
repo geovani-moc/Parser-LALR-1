@@ -42,12 +42,15 @@ Rule stringToRule(string &line)
     istringstream ruleStream(line);
 
     ruleStream >> rule.number >> buffer;
+    ruleStream.ignore();
     rule.symbol = stringToToken(buffer);
 
     while (getline(ruleStream, buffer, ' '))
     {
         rule.symbolDerivation.push_back(stringToToken(buffer));
     }
+
+    rule.unstackQuantity = (int)rule.symbolDerivation.size();
         
     return rule;
 }
@@ -58,14 +61,14 @@ void printRule(vector<Rule> &rules)
 
     for (int i = 0; i < size; i++)
     {
-        printf("[%4d] [%4s] [",rules[i].number, rules[i].symbol.symbol.c_str() );
+        printf("[%4d] [%4s] ",rules[i].number, rules[i].symbol.symbol.c_str() );
 
         int auxSize = rules[i].symbolDerivation.size();
         for (int j = 0; j < auxSize; j++)
         {
-            printf("%s ",rules[i].symbolDerivation[j].symbol.c_str());
+            printf("[%s]",rules[i].symbolDerivation[j].symbol.c_str());
         }
-        printf("]\n");
+        printf("\n");
     }
     
 }

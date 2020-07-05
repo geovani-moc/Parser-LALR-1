@@ -23,6 +23,7 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
             position++;
             currentState = operation.actionNumber;
             stack.back().currentState = currentState;
+            printf("%s - s%d\n", stack.back().symbol.c_str(), operation.actionNumber);
             break;
 
         case 'r':
@@ -50,7 +51,7 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
             break;
 
         default:
-            fprintf(stderr, "Erro da gramatica: entrada nao acaita\n");
+            fprintf(stderr, "Erro da gramatica: entrada nao aceita\n");
             exit(EXIT_FAILURE);
         }
     }

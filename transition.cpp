@@ -42,10 +42,16 @@ Operation seekTransition(vector<Transition> &transitions, Token token, int curre
         {
             operation.action = transitions[i].action;
             operation.actionNumber = transitions[i].actionNumber;
+
+            if (operation.actionNumber == -1)
+            {
+                operation.action = 'g';
+            }
+            
             return operation;
         }
     }
     
-    fprintf(stderr, "Erro: Transicao com estado %d e simbolo %s nao encontrada.\n", currentState, token.symbol.c_str());
+    fprintf(stderr, "Erro: Transicao com estado %d e simbolo \'%s\' nao encontrada.\n", currentState, token.symbol.c_str());
     exit(EXIT_FAILURE);
 }

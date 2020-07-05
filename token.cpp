@@ -22,7 +22,6 @@ vector<Token> readTokens(const char *fileName)
 Token stringToToken(string &line)
 {
     Token token;
-    //printf("a");
 
     istringstream tokenStream(line);
     //tokenStream >> token.symbol >> token.content;
