@@ -1,7 +1,0 @@
-int - s3
-ID - s9
-; - s13
-Reducao: [     ;] [      ] [  13]
-Reducao: [    ID] [  hoje] [   9]
-Reducao: [   int] [      ] [   3]
-[     D] [      ] [  -1]

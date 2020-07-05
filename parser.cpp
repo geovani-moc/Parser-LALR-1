@@ -10,11 +10,17 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
     Rule currentRule;
     Token token;
 
-    while (!acceptGrammar(currentState, position, stack))
+    while (!acceptGrammar(currentState, position, stack))// erro aqui, erro no estado de aceitacao
     {
         //token = readToken(position);// modificar isso, acessar posicao do vetor de tokens
         token = tokens[position];
-        operation = seekTransition(transitions, token, currentState);
+        if((!stack.empty()) && (stack.back().currentState == -1))
+        {
+            operation = seekTransition(transitions, stack.back(), currentState);
+        }else
+        {
+            operation = seekTransition(transitions, token, currentState);
+        }
 
         switch (operation.action)
         {
@@ -38,11 +44,16 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
                 printToken(temporaryToken);
             }
 
-            currentState = stack.back().currentState;
+            if(stack.empty())
+            {
+                currentState = 0;
+            }else
+            {
+                currentState = stack.back().currentState;
+            }
+            
             stack.push_back(currentRule.symbol);
-
             printToken(currentRule.symbol);
-
             break;
 
         case 'g':
