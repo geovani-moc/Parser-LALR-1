@@ -66,6 +66,9 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
             exit(EXIT_FAILURE);
         }
     }
+
+    //reducao final tem que ser feita aqui s->VT$.
+
     //return estrutura em memoria(arvore de parser)
 }
 
