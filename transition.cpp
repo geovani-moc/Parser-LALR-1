@@ -43,9 +43,9 @@ Operation seekTransition(vector<Transition> &transitions, Token token, int curre
             operation.action = transitions[i].action;
             operation.actionNumber = transitions[i].actionNumber;
 
-            if (operation.actionNumber == -1)
+            if (operation.actionNumber == NON_STATE)
             {
-                operation.action = 'g';
+                operation.action = GO_TO;
             }
             
             return operation;

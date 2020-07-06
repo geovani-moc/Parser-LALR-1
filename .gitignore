@@ -43,3 +43,6 @@
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+err
+out

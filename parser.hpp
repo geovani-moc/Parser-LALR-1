@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &transitions);
+vector<vector<Token>> parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &transitions);
 bool acceptGrammar(int currentState, int position, vector<Token> &stack);
 
 #endif

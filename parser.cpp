@@ -1,6 +1,6 @@
 #include "parser.hpp"
 
-void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &transitions)
+vector<vector<Token>> parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &transitions)
 {
     int position = 0;
     int currentState = 0;
@@ -10,11 +10,13 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
     Rule currentRule;
     Token token;
 
-    while (!acceptGrammar(currentState, position, tokens))// erro aqui, erro no estado de aceitacao
+    vector<vector<Token>> parserTree;
+    vector<Token> temporary;
+
+    while (!acceptGrammar(currentState, position, tokens))
     {
-        //token = readToken(position);// modificar isso, acessar posicao do vetor de tokens
         token = tokens[position];
-        if((!stack.empty()) && (stack.back().currentState == -1))
+        if((!stack.empty()) && (stack.back().currentState == NON_STATE))
         {
             operation = seekTransition(transitions, stack.back(), currentState);
         }else
@@ -24,26 +26,21 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
 
         switch (operation.action)
         {
-        case 's':
+        case SHIFT:
             stack.push_back(token);
             position++;
-            printf("State %d ",currentState);
             currentState = operation.actionNumber;
             stack.back().currentState = currentState;
-            printf("shift %d\n", operation.actionNumber);
             break;
 
-        case 'r':
+        case REDUCE:
+            temporary.clear();
             currentRule = seekRule(operation.actionNumber, rules);
 
-            printf("State %d reduce %d\n", currentState, currentRule.number);
             for (int i = 0; i < currentRule.unstackQuantity; i++)
             {
-                Token temporaryToken = stack.back();
+                temporary.push_back(stack.back());
                 stack.pop_back();
-                // adicionar elemento na estrutura em memoria aqui
-                printf("  └──────> pop ");
-                printToken(temporaryToken);
             }
 
             if(stack.empty())
@@ -55,14 +52,17 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
             }
             
             stack.push_back(currentRule.symbol);
-            //printToken(currentRule.symbol);
+            stack.back().nonTerminal = true;
+            
+            parserTree.push_back(temporary);
+            stack.back().content = to_string(((int)parserTree.size())-1);
+
             break;
 
-        case 'g':
-            printf("State %d ",currentState);
+        case GO_TO:
             currentState = operation.actionNumber;
             stack.back().currentState = currentState;
-            printf("goto %d\n", operation.actionNumber);
+            
             break;
 
         default:
@@ -71,19 +71,26 @@ void parser(vector<Token> &tokens, vector<Rule> &rules, vector<Transition> &tran
         }
     }
 
-     //reducao final tem que ser feita aqui s->VT$.
-    currentRule = seekRule(operation.actionNumber, rules);
+    //reducao s->VT$.
+    currentRule = seekRule(0, rules);
+    temporary.clear();
 
     for (int i = 0; i < currentRule.unstackQuantity; i++)
     {
-        Token temporaryToken = stack.back();
+        temporary.push_back( stack.back());
         stack.pop_back();
-        // adicionar elemento na estrutura em memoria aqui
     }
-    printf("Accept");
+    parserTree.push_back(temporary);
 
+    token = currentRule.symbol;
+    token.content = to_string((int)parserTree.size() - 1);
+    token.nonTerminal = true;
 
-    //return estrutura em memoria(arvore de parser)
+    temporary.clear();
+    temporary.push_back(token);
+    parserTree.push_back(temporary);
+
+    return parserTree;
 }
 
 bool acceptGrammar(int currentState, int position, vector<Token> &stack)

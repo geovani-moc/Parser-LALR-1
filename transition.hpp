@@ -5,6 +5,10 @@
 #include <fstream>
 #include "token.hpp"
 
+#define GO_TO ('g')
+#define SHIFT ('s')
+#define REDUCE ('r')
+
 using namespace std;
 
 typedef struct Transition

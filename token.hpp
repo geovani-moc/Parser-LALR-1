@@ -6,13 +6,16 @@
 #include <fstream>
 #include <sstream>
 
+#define NON_STATE (-1)
+
 using namespace std;
 
 typedef struct Token
 {
     string symbol;
     string content;
-    int currentState;// iniciado com -1, sem estado
+    int currentState;
+    bool nonTerminal;
 
 } Token;
 

@@ -24,13 +24,13 @@ Token stringToToken(string &line)
     Token token;
 
     istringstream tokenStream(line);
-    //tokenStream >> token.symbol >> token.content;
     getline(tokenStream, token.symbol, ' ');
     if (!tokenStream.eof())
     {
         getline(tokenStream, token.content);
     }
     token.currentState = -1;
+    token.nonTerminal = false;
 
     return token;
 }
